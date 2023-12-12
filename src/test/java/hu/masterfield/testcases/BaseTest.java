@@ -20,7 +20,7 @@ import java.time.Duration;
 public class BaseTest implements TestWatcher {
     protected static WebDriver driver = null;
     protected static WebDriverWait wait = null;
-    protected static Logger logger = LogManager.getLogger(BaseTest);
+    protected static Logger logger = LogManager.getLogger(BaseTest.class);
 
     @BeforeAll
 public static void setup(){
