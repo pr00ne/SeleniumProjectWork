@@ -24,7 +24,7 @@ public class Screenshot {
 
     @Attachment(value = "Képernyőmentés", type = "image/png")
     public static byte[] takesScreenshot(WebDriver driver) throws IOException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYYMMdd_HHmmss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYYMMdd_HHmmss_SSS");
         String timestamp = dateFormat.format(new Date());
         byte[] screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
         String screenshotFolder = Consts.SCREENSHOT_FOLDER;

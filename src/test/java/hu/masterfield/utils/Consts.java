@@ -20,7 +20,7 @@ public class Consts {
     //Konstansok a Loginhoz
 
     public static final String SCREENSHOT_FOLDER = System.getProperty("user.dir")
-            .replace("\\", "/") + "target/screenshots";
+            .replace("\\", "/") + "/target/screenshots";
 
     // Konstansok a regisztrációhoz
     public static final String REG_TITLE = "reg.title";

@@ -35,7 +35,7 @@ public class BaseTest implements TestWatcher {
     @BeforeAll
     public static void setup() {
         logger.info("BaseTest setup called.");
-        driver = WebBrowser.createDriver(WebBrowserType.FirefoxWDM);
+        driver = WebBrowser.createDriver(WebBrowserType.ChromeWDM);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
@@ -50,7 +50,7 @@ public class BaseTest implements TestWatcher {
     @AfterAll
     public static void cleanup() {
         logger.info("BaseTest.cleanup called...");
-        // driver.quit();
+        driver.quit();
         logger.info("BaseTest.cleanup WebDriver  quit...");
     }
 
