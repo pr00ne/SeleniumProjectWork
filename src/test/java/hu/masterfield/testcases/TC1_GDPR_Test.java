@@ -18,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 /**
  * TC1 - GDPR nyilakozat sikeres elfogadása
  */
+
 public class TC1_GDPR_Test extends BaseTest {
     protected static Logger logger = LogManager.getLogger(TC1_GDPR_Test.class);
 
