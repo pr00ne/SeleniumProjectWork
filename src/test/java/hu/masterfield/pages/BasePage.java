@@ -1,6 +1,5 @@
 package hu.masterfield.pages;
 
-
 import hu.masterfield.utils.GlobalTestData;
 import hu.masterfield.utils.Screenshot;
 import org.apache.logging.log4j.LogManager;
@@ -26,11 +25,8 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class BasePage {
 
     protected static Logger logger = LogManager.getLogger(BasePage.class);
-
     protected static WebDriver driver;
-
     protected static WebDriverWait wait;
-
     protected static GlobalTestData globalTestData = new GlobalTestData();
 
     public BasePage(WebDriver driver) {
@@ -64,5 +60,21 @@ public class BasePage {
             logger.warn("BasePage.takesScreenshot was thrown IOException: " + ex.getMessage() + " , "
                     + ex.getStackTrace());
         }
+    }
+
+    public void setTextbox(WebElement webElement, String webElementName, String text) {
+        if (webElement.getText().isEmpty()) {
+            // TO DO NOTHING
+        } else {
+            try {
+                webElement.clear();
+                logger.trace(webElementName + ".clear() called");
+            } catch (Exception ex) {
+                logger.warn(webElementName + "textbox cannot clear.");
+            }
+        }
+        webElement.sendKeys(text);
+
+        logger.trace(webElementName + ".sendKeys() called");
     }
 }

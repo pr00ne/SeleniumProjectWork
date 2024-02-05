@@ -11,9 +11,9 @@ import java.util.Properties;
 /**
  * A globalTestData.properties-t felolvasó osztály
  */
-
 public class GlobalTestData extends Properties {
     protected static Logger logger = LogManager.getLogger(GlobalTestData.class);
+
     public GlobalTestData() {
         InputStream is = BaseTest.class.getResourceAsStream(Consts.GLOBAL_TEST_DATA_PPROPERTIES);
         try {
@@ -24,6 +24,5 @@ public class GlobalTestData extends Properties {
             throw new RuntimeException(ex);
         }
         logger.info(Consts.GLOBAL_TEST_DATA_PPROPERTIES + " loaded");
-
     }
 }

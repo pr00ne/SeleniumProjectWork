@@ -4,23 +4,26 @@ package hu.masterfield.utils;
  * Ez az osztály konstansokat tartalmaz, amelyeket külső forrásból,
  * property fileból (.properties) olvasunk be
  */
-
 public class Consts {
-
     //Konstansok az applikációkhoz
-
     public static final String APPLICATION_URL = "application.url";
-
     //Konstansok elérési utakhoz:
     public static final String CONFIG_PROPERTIES = "/config.properties";
     public static final String GLOBAL_TEST_DATA_PPROPERTIES = "/globalTestData.properties";
+    public static final String SCREENSHOT_FOLDER = System.getProperty("user.dir")
+            .replace("\\", "/") + "/target/screenshots";
+
+    //Konstansok a Loginhoz
     public static final String LOGIN_USERNAME = "login.userName";
     public static final String LOGIN_PASSWORD = "login.password";
 
-    //Konstansok a Loginhoz
-
-    public static final String SCREENSHOT_FOLDER = System.getProperty("user.dir")
-            .replace("\\", "/") + "/target/screenshots";
+    // Konstatnsok a Savingshez
+    public static final String ACCOUNT_TYPES_SAVINGS = "Savings";
+    public static final String ACCOUNT_TYPES_MONEY_MARKET = "Money Market";
+    public static final String OWNERSHIP_TYPES_INDIVIDUAL = "Individual";
+    public static final String OWNERSHIP_TYPES_JOINT = "Joint";
+    public static final String SAVINGS_DATA_CSV = "/savingsData.csv";
+    public static final String SAVE_SAVINGS_DATA_CSV = "target/dumpSavings.csv";
 
     // Konstansok a regisztrációhoz
     public static final String REG_TITLE = "reg.title";
@@ -42,7 +45,6 @@ public class Consts {
     public static final String REG_WORK_PHONE = "reg.workPhone";
 
     //Konstansok a profil adatok módosításához
-
     public static final String MOD_TITLE = "mod.title";
     public static final String MOD_FIRST_NAME = "mod.firstName";
     public static final String MOD_LAST_NAME = "mod.lastName";
@@ -55,5 +57,6 @@ public class Consts {
     public static final String MOD_MOBILE_PHONE = "mod.mobilePhone";
     public static final String MOD_WORK_PHONE = "mod.workPhone";
 
-
+    // Konstansok az API teszthez
+    public static final String USER_ID = "api.userID";
 }

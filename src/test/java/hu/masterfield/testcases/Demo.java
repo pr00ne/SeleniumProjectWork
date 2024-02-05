@@ -14,7 +14,7 @@ public class Demo extends BaseTest {
 
     @Test
     public void testDemo() throws InterruptedException {
-        Thread.sleep(15000);
+        Thread.sleep(1000);
         logger.info("This is a demo test");
     }
 

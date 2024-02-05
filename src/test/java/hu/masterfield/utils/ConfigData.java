@@ -9,23 +9,20 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * A config.properties file felolvasásást végző osztály.
+ * A config.properties file felolvasásását végző osztály.
  */
-
 public class ConfigData extends Properties {
-
     protected static Logger logger = LogManager.getLogger(ConfigData.class);
 
     public ConfigData() {
         InputStream is = BaseTest.class.getResourceAsStream(Consts.CONFIG_PROPERTIES);
         try {
             load(is);
-
         } catch (IOException ex) {
-            logger.warn("Exception when: " + Consts.CONFIG_PROPERTIES + " try to load. " + ex.getMessage());
+            logger.warn("Exception when: " + Consts.CONFIG_PROPERTIES +
+                    " try to load. " + ex.getMessage());
             throw new RuntimeException(ex);
         }
         logger.info(Consts.CONFIG_PROPERTIES + " loaded.");
-
     }
 }

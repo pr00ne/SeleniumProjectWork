@@ -19,70 +19,57 @@ public class HomePage extends BasePage {
     protected static Logger logger = LogManager.getLogger(HomePage.class);
     protected static GlobalTestData globalTestData = new GlobalTestData();
 
+    //Home
+    @FindBy(id="home-menu-item")
+    private WebElement homeMenu;
     //Checking menu
     @FindBy(id = "checking-menu")
     private WebElement checkingMenu;
-
     // Checking menu -> View Checking
     @FindBy(id = "view-checking-menu-item")
     private WebElement viewCheckingMenuItem;
-
     // Cheking menu -> New Checking
     @FindBy(id = "new-checking-menu-item")
     private WebElement newCheckingMenuItem;
-
     // Savings menu
     @FindBy(id = "savings-menu")
     private WebElement savingsMenu;
-
     // Savings menu -> View Savings
     @FindBy(id = "view-savings-menu-item")
     private WebElement viewSavingsMenuItem;
-
     // Savings menu -> New Savging
     @FindBy(id = "new-savings-menu-item")
     private WebElement newSavingsMenuItem;
-
     // Welcome message
     @FindBy(xpath = "//div[@class='page-title']//li")
     // @FindBy(css = "div.page-title li")
-    // @FindBy(css = "div.page-title li")
     private WebElement labelTitle;
-
-    // USer avatar /picture
+    // User avatar /picture
     @FindBy(css = "img.user-avatar.rounded-circle")
     private WebElement avatarDropdownMenuButton;
-
     // Avtar lenyitása -> My Profile
     @FindBy(xpath = "//a[contains(text(),'My Profile')]")
     // @FindBy(css="a.nav-link[href=\"/bank/user/profile\"]")
     private WebElement avatarDropdownMyProfileLink;
-
     // Avtar lenyitása -> Change Password
     @FindBy(xpath = "//a[contains(text(),'Change Password')]")
     // @FindBy(css="a.nav-link[href=\"/bank/user/password\"]")
     private WebElement avatarDropdownChangePasswordLink;
-
     // Avtar lenyitása -> Create Data
-
     @FindBy(xpath = "//a[contains(text(),'Create Data')]")
     // @FindBy(css="a.nav-link[href=\"/bank/user/create-data\"]")
     private WebElement avatarDropdownCreateDataLink;
-
     // Avtar lenyitása -> Delete Data
     @FindBy(xpath = "//a[contains(text(),'Delete Data')]")
     // @FindBy(css="a.nav-link[href=\"/bank/user/delete-data\"]")
     private WebElement avatarDropdownDeleteDataLink;
-
     // Avtar lenyitása -> Logout
     @FindBy(xpath = "//a[contains(text(),'Logout')]")
     // @FindBy(css="a.nav-link[href=\"/bank/logout\"]")
     private WebElement avatarDropdownLogoutLink;
-
     // Trasactions / transfers -> Withdraw
     @FindBy(id = "withdraw-menu-item")
     private WebElement withdrawLink;
-
     // Deposit
     @FindBy(id = "deposit-menu-item")
     private WebElement depositLink;
@@ -194,7 +181,9 @@ public class HomePage extends BasePage {
 
     public boolean isLoaded() {
         logger.info("HomePage.isLoaded() called");
-        boolean isLoaded = isLoaded(savingsMenu) && isLoaded(checkingMenu) && isLoaded(avatarDropdownMenuButton);
+        boolean isLoaded = isLoaded(savingsMenu)
+                && isLoaded(checkingMenu)
+                && isLoaded(avatarDropdownMenuButton);
         logger.trace("isLoaded= " + isLoaded);
         return isLoaded;
     }
@@ -220,16 +209,26 @@ public class HomePage extends BasePage {
     /**
      * HomePage ellenőrzése.
      */
-    @Step("HomePage ellenőrzése profil módosítása után.")
+    @Step("HomePage ellenőrzése.")
     public void validateHomePage(){
         logger.info("validateHomePage called");
-
         assertEquals("Digital Bank", driver.getTitle());
         assertTrue(driver.getCurrentUrl().endsWith("/bank/home"));
-        assertEquals("Welcome", globalTestData.getProperty((Consts.REG_FIRST_NAME), labelTitle.getText()));
-
+        assertEquals("Welcome " + globalTestData.getProperty(Consts.REG_FIRST_NAME)
+                , labelTitle.getText());
     }
-
+    /**
+     * HomePage ellenőrzése profil módosítása után.
+     */
+    @Step("HomePage ellenőrzése profil mósosítása után.")
+    public void validateHomePageAfterModifyProfile() {
+        logger.info("validateHomePageAfterModifyProfile called");
+        homeMenu.click();
+        assertEquals("Digital Bank", driver.getTitle());
+        assertTrue(driver.getCurrentUrl().endsWith("/bank/home"));
+        assertEquals("Welcome " + globalTestData.getProperty(Consts.MOD_FIRST_NAME)
+                , labelTitle.getText());
+    }
     public HomePage(WebDriver driver) {
         super(driver);
     }

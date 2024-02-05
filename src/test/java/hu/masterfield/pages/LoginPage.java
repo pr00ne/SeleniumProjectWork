@@ -38,7 +38,7 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//a[text()=' Sign Up Here']")
     private WebElement registrationLink; // regisztrációs link
 
-    @FindBy(xpath = "//span[text()='Registration Successfil. Please Login.']")
+    @FindBy(xpath = "//span[text()='Registration Successful. Please Login.']")
     private WebElement registrationSuccessfulLabel; // sikeres regisztráció visszajelzés
 
     //  @FindBy(xpath = "//p[test()='Az oldal sütiket használ']")
@@ -86,7 +86,8 @@ public class LoginPage extends BasePage {
 
         assertEquals("Digital Bank", driver.getTitle());
         assertTrue(driver.getCurrentUrl().endsWith("/bank/register"));
-        assertEquals("Success", registrationSuccessfulLabel.getText());
+        assertTrue(registrationSuccessfulLabel.getText().contains("Success"));
+        assertEquals("Registration Successful. Please Login.", registrationSuccessfulLabel.getText());
 
         return isRegistrationSuccessful;
     }
@@ -156,22 +157,5 @@ public class LoginPage extends BasePage {
         logger.info("isCookieVisible= " + isCookieVisible);
         return isCookieVisible;
     }
-
-
-    public void setTextbox(WebElement webElement, String webElementName, String text) {
-        if (webElement.getText().isEmpty()) {
-            // TO DO NOTHING
-        } else {
-            try {
-                webElement.clear();
-                logger.trace(webElementName + ".sendKeys() called");
-            } catch (Exception ex) {
-                logger.warn(webElementName + "textbox cannot clear.");
-            }
-        }
-        webElement.sendKeys(text);
-    }
-
-
 }
 

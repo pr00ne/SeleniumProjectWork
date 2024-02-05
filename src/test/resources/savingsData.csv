@@ -1,0 +1,5 @@
+accountTypes,ownershipTypes,accountName,openingBalance
+Savings,Individual,First,10000
+Money Market,Individual,Second,2500
+Savings,Joint,Third,3000
+Money Market,Joint,Fourth,4000
