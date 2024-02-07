@@ -59,4 +59,6 @@ public class Consts {
 
     // Konstansok az API teszthez
     public static final String USER_ID = "api.userID";
+
+    public static final String USER_NAME ="api.username";
 }

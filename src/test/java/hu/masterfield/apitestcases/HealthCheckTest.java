@@ -13,7 +13,7 @@ public class HealthCheckTest extends BaseAPITest {
      * GET /api/v1/health
      */
     @Test
-    public void testHelathCheck() {
+    public void testHealthCheck() {
         Response response = given()
                 .contentType(ContentType.JSON)
                 .when()

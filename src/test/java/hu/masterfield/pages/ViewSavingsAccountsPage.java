@@ -43,9 +43,22 @@ public class ViewSavingsAccountsPage extends BasePage{
     @FindBy(xpath="//h1[text()='View Savings Accounts']")
     private WebElement pageTitle;
 
+    @FindBy(id="largeModalLabel")
+    private WebElement noAccounts;
+
+    @FindBy(xpath = "//button[text()='Continue']")
+    private WebElement continueButton;
+
     public ViewSavingsAccountsPage(WebDriver driver) {
         super(driver);
     }
+
+    @Step("No Accounts üzenet megjelenésének ellenőrzése")
+    public boolean noAccountsIsLoaded(){
+        boolean isLoaded = isLoaded(noAccounts) && isLoaded(continueButton);
+        return isLoaded;
+    }
+
 
     /**
      * Megjelenő Savingek ellenőrzése
