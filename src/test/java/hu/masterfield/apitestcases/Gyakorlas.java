@@ -7,11 +7,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
-import static io.restassured.RestAssured.responseSpecification;
-import static io.restassured.path.json.JsonPath.given;
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Gyakorlas extends BaseAPITest {
     @Test
@@ -32,7 +28,7 @@ public class Gyakorlas extends BaseAPITest {
     @Test
     public void getUserProfile() {
         String userID = globalTestData.getProperty(Consts.USER_ID);
-        Response response = given()
+        Response response = given().log().all()
                 .contentType(ContentType.JSON)
                 .header(AUTH_HEADER, "Bearer " + authToken)
                 .pathParam("userId", userID)
@@ -53,9 +49,9 @@ public class Gyakorlas extends BaseAPITest {
     }
 
     @Test
-            public void getUserByUsername() {
+    public void getUserByUsername() {
         String userName = globalTestData.getProperty(Consts.USER_NAME);
-        Response response = given()
+        Response response = given().log().params()
                 .contentType(ContentType.JSON)
                 .header(AUTH_HEADER, "Bearer " + authToken)
                 .queryParam("username", userName)
@@ -67,9 +63,8 @@ public class Gyakorlas extends BaseAPITest {
     }
 
     @Test
-    public void getAllAccounts()
-    {
-        Response response = given()
+    public void getAllAccounts() {
+        Response response = given().log().all()
                 .contentType(ContentType.JSON)
                 .header(AUTH_HEADER, "Bearer " + authToken)
                 .when()
@@ -80,4 +75,5 @@ public class Gyakorlas extends BaseAPITest {
                 .body("accountType.id[1]", is(8))
                 .body("accountType.id[2]", is(10))
                 .body("accountType.id[3]", is(11));
-    }}
+    }
+}
